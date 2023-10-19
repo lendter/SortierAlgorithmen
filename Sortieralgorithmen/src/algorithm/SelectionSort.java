@@ -4,20 +4,16 @@ public class SelectionSort implements SortAlgorithm{
 
 	@Override
 	public int[] sort(int[] array) {
-		if(array.length > 0) {
-			for(int index = 0; index < array.length; index++) {
-				int minPosVal = array[index];
-				int newPosVal = minPosVal;
-				int newPos = index;
-				for(int i = index; i < array.length; i++) {
-					if(array[i] < newPosVal) {
-						newPosVal = array[i];
-						newPos = i;
-					}
+		int min = Integer.MAX_VALUE;
+		for(int i = 0; i < array.length - 1; i++) {
+			for(int j = 0; j < array.length - 1; j++) {
+				if(array[j] < min) {
+					min = j;
 				}
-				array[index] = newPos;
-				array[newPos] = minPosVal;
 			}
+			int temp = array[min];
+			array[min] = array[i];
+			array[i] = temp;
 		}
 		return array;
 	}
