@@ -1,7 +1,15 @@
 package algorithm;
 
-public class SelectionSort implements SortAlgorithm {
+import utilities.ArrayUtilities;
 
+public class SelectionSort implements SortAlgorithm {
+	private ArrayUtilities utilities;
+	
+	public SelectionSort() {
+		this.utilities = new ArrayUtilities();
+	}
+	
+	
 	@Override
 	public int[] sort(int[] array) {
 		for (int i = 0; i < array.length - 1; i++) {
@@ -11,9 +19,7 @@ public class SelectionSort implements SortAlgorithm {
 					index = j;
 				}
 			}
-			int smallerNumber = array[index];
-			array[index] = array[i];
-			array[i] = smallerNumber;
+			utilities.swap(array, index, i);
 		}
 		return array;
 	}
